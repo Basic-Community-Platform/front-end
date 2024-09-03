@@ -6,5 +6,19 @@
     "singleQuote": false, 
     "trailingComma": "all", 
     "bracketSpacing": true, 
-    "arrowParens": "always"
-  }
+    "arrowParens": "always",
+    "plugins": [
+		  "@trivago/prettier-plugin-sort-imports",
+		  "prettier-plugin-tailwindcss"
+	  ],
+	  "importOrder": [
+		  "^next",
+		  "^react",
+		  "^@tanstack/react-query",
+		  "<THIRD_PARTY_MODULES>",
+		  "^@.*layout",
+		  "^@.*components",
+		  "^@.*css",
+		  "\\.(png|jpe?g|gif|svg|webp)$"
+	]
+}
