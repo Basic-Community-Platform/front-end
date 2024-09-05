@@ -1,4 +1,17 @@
+import Link from "next/link"
+import { PencilLine } from "lucide-react"
+import { Button } from "@/components/ui/button"
+
 const BoardPage = () => {
-	return <div>게시판페이지</div>
+	return (
+		<div>
+			<Link href="/board/create">
+				<Button>
+					<PencilLine className="mr-2 h-4 w-4" />
+					글쓰기
+				</Button>
+			</Link>
+		</div>
+	)
 }
 export default BoardPage
