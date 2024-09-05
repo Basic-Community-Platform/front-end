@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
@@ -59,6 +60,9 @@ export const SignInForm = () => {
 				<Button type="submit" className="w-2/3">
 					로그인
 				</Button>
+				<div className="flex w-2/3 justify-end text-slate-500">
+					<Link href="/auth/signup">회원가입</Link>
+				</div>
 			</form>
 		</Form>
 	)
