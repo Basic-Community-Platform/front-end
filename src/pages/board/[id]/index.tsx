@@ -1,6 +1,5 @@
-import { PostDetail } from "@/modules/board/components/PostDetail"
 import { PostDetailLayout } from "@/modules/board/layout/PostDetailLayout"
-
+import { PostDetail } from "@/modules/board/components/PostDetail"
 
 const PostDetailPage = () => {
 	const getLayout = PostDetailPage.getLayout ?? ((page) => page)
