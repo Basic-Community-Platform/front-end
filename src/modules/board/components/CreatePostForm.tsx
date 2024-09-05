@@ -54,7 +54,7 @@ export const CreatePostForm = () => {
 							<FormItem className="w-2/3">
 								<FormLabel>내용</FormLabel>
 								<FormControl>
-									<Textarea placeholder="내용을 입력하세요" {...field} />
+									<Textarea placeholder="내용을 입력하세요" className="h-60" {...field} />
 								</FormControl>
 								{error ? (
 									<FormMessage />
