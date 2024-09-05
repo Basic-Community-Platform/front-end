@@ -1,9 +1,8 @@
 import { AuthLayout } from "@/modules/auth/components/AuthLayout"
-import { SignUpForm } from "@/modules/auth/components/SignUpForm"
 
 const SignUpPage = () => {
 	const getLayout = SignUpPage.getLayout ?? ((page) => page)
-	return getLayout(<SignUpForm />)
+	return getLayout(<div>회원가입 페이지</div>)
 }
 export default SignUpPage
 
