@@ -1,10 +1,10 @@
-import { useRouter } from "next/router"
-import { PostDetailLayout } from "@/modules/board/PostDetailLayout"
+import { PostDetail } from "@/modules/board/components/PostDetail"
+import { PostDetailLayout } from "@/modules/board/layout/PostDetailLayout"
+
 
 const PostDetailPage = () => {
-	const router = useRouter()
 	const getLayout = PostDetailPage.getLayout ?? ((page) => page)
-	return getLayout(<div>post: {router.query.id}</div>)
+	return getLayout(<PostDetail />)
 }
 export default PostDetailPage
 

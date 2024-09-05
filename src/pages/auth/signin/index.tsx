@@ -1,4 +1,4 @@
-import { AuthLayout } from "@/modules/auth/components/AuthLayout"
+import { AuthLayout } from "@/modules/auth/layout/AuthLayout"
 import { SignInForm } from "@/modules/auth/components/SignInForm"
 
 const SignInPage = () => {

@@ -1,5 +1,5 @@
-import { CreatePostForm } from "@/modules/board/CreatePostForm"
-import { CreatePostLayout } from "@/modules/board/CreatePostLayout"
+import { CreatePostForm } from "@/modules/board/components/CreatePostForm"
+import { CreatePostLayout } from "@/modules/board/components/CreatePostLayout"
 
 const CreatePostPage = () => {
 	const getLayout = CreatePostPage.getLayout ?? ((page) => page)
