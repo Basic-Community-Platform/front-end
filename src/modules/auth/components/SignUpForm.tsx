@@ -6,10 +6,10 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input"
 
 const formSchema = z.object({
-	name: z.string(),
-	loginId: z.string(),
+	name: z.string().min(1, "이름을 입력해주세요."),
+	loginId: z.string().min(1, "아이디를 입력해주세요."),
 	email: z.string().email(),
-	password: z.string(),
+	password: z.string().min(1, "비밀번호를 입력해주세요."),
 })
 
 function onSubmit(values: z.infer<typeof formSchema>) {

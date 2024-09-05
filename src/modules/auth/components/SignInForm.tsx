@@ -7,8 +7,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input"
 
 const formSchema = z.object({
-	loginId: z.string(),
-	password: z.string(),
+	loginId: z.string().min(1, "아이디를 입력해주세요."),
+	password: z.string().min(1, "비밀번호를 입력해주세요."),
 })
 
 function onSubmit(values: z.infer<typeof formSchema>) {
