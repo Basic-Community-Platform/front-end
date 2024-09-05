@@ -6,9 +6,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input"
 
 const formSchema = z.object({
-	name: z.string(),
 	loginId: z.string(),
-	email: z.string().email(),
 	password: z.string(),
 })
 
@@ -16,37 +14,22 @@ function onSubmit(values: z.infer<typeof formSchema>) {
 	console.log(values)
 }
 
-export const SignUpForm = () => {
+export const SignInForm = () => {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			name: "",
 			loginId: "",
-			email: "",
 			password: "",
 		},
 	})
 
 	return (
 		<Form {...form}>
-			<h1 className="w-1/2 min-w-[400px] py-4 text-xl">회원가입</h1>
+			<h1 className="w-1/2 min-w-[400px] py-4 text-xl">로그인</h1>
 			<form
 				onSubmit={form.handleSubmit(onSubmit)}
-				className="flex h-full w-1/2 min-w-[400px] flex-col items-center justify-center space-y-6 rounded-l border border-slate-200 py-16"
+				className="flex h-full w-1/2 min-w-[400px] flex-col items-center justify-center space-y-8 rounded-l border border-slate-200 py-16"
 			>
-				<FormField
-					control={form.control}
-					name="name"
-					render={({ field }) => (
-						<FormItem className="w-2/3">
-							<FormLabel>이름</FormLabel>
-							<FormControl>
-								<Input placeholder="이름을 입력하세요" {...field} />
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
 				<FormField
 					control={form.control}
 					name="loginId"
@@ -55,19 +38,6 @@ export const SignUpForm = () => {
 							<FormLabel>아이디</FormLabel>
 							<FormControl>
 								<Input placeholder="아이디를 입력하세요" {...field} />
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
-				<FormField
-					control={form.control}
-					name="email"
-					render={({ field }) => (
-						<FormItem className="w-2/3">
-							<FormLabel>이메일</FormLabel>
-							<FormControl>
-								<Input placeholder="이메일을 입력하세요" {...field} />
 							</FormControl>
 							<FormMessage />
 						</FormItem>
@@ -86,8 +56,8 @@ export const SignUpForm = () => {
 						</FormItem>
 					)}
 				/>
-				<Button type="submit" className="min-w-1/2 w-2/3">
-					회원가입
+				<Button type="submit" className="w-2/3">
+					로그인
 				</Button>
 			</form>
 		</Form>
