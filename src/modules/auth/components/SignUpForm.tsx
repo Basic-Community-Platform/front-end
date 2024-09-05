@@ -2,13 +2,13 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 
 const formSchema = z.object({
-	name: z.string().min(1, "1글자 이상 입력하세요"),
+	name: z.string(),
 	loginId: z.string(),
-	email: z.string(),
+	email: z.string().email(),
 	password: z.string(),
 })
 
@@ -20,7 +20,10 @@ export const SignUpForm = () => {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			name: "minsun",
+			name: "",
+			loginId: "",
+			email: "",
+			password: "",
 		},
 	})
 
