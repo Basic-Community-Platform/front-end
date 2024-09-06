@@ -5,15 +5,13 @@ import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { useCreatePost } from "../hooks/useCreatePost"
 
 const formSchema = z.object({
 	title: z.string().min(1, "제목을 입력해주세요."),
 	content: z.string().min(1, "내용을 입력해주세요."),
 })
 
-function onSubmit(values: z.infer<typeof formSchema>) {
-	console.log(values)
-}
 export const CreatePostForm = () => {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -22,6 +20,13 @@ export const CreatePostForm = () => {
 			content: "",
 		},
 	})
+
+	const { mutate } = useCreatePost()
+
+	const onSubmit = (values: z.infer<typeof formSchema>) => {
+		mutate(values)
+	}
+
 	return (
 		<section className="w-full">
 			<Form {...form}>
