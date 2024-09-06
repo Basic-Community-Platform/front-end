@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { usePostById } from "../hooks/usePostById"
+import { useFetchPostById } from "../hooks/useFetchPostById"
 import { CommentForm } from "./CommentForm"
 import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
@@ -7,7 +7,7 @@ import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
 export const PostDetail = () => {
 	const router = useRouter()
 	const id = router.query.id?.toString()
-	const { data, isLoading, isError, error } = usePostById(id)
+	const { data, isLoading, isError, error } = useFetchPostById(id)
 
 	if (isLoading) return <p>로딩중...</p>
 

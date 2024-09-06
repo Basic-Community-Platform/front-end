@@ -17,7 +17,7 @@ const getPostByPostId = async (id: string | string[] | undefined): Promise<PostD
 	return data
 }
 
-export const usePostById = (id: string | undefined) => {
+export const useFetchPostById = (id: string | undefined) => {
 	return useQuery({
 		queryKey: ["post", id],
 		queryFn: () => getPostByPostId(id && id.toString()),
