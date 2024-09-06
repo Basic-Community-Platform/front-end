@@ -1,6 +1,7 @@
 import { useRouter } from "next/router"
 import { useFetchPostById } from "../hooks/useFetchPostById"
 import { CommentForm } from "./CommentForm"
+import { DeleteButton } from "./DeleteButton"
 import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
 
@@ -40,7 +41,7 @@ export const PostDetail = () => {
 				</div>
 				<div className="flex justify-end gap-x-2">
 					<Button variant="outline">수정</Button>
-					<Button>삭제</Button>
+					<DeleteButton />
 				</div>
 			</section>
 			<CommentForm commentCount={data?.commentCount || 0} />
