@@ -2,7 +2,7 @@ import { useRouter } from "next/router"
 import { useFetchPostById } from "../hooks/useFetchPostById"
 import { CommentForm } from "./CommentForm"
 import { DeleteButton } from "./DeleteButton"
-import { Button } from "@/components/ui/button"
+import { UpdateButton } from "./UpdateButton"
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
 
 export const PostDetail = () => {
@@ -40,7 +40,7 @@ export const PostDetail = () => {
 					<p>{data?.content}</p>
 				</div>
 				<div className="flex justify-end gap-x-2">
-					<Button variant="outline">수정</Button>
+					<UpdateButton />
 					<DeleteButton />
 				</div>
 			</section>
