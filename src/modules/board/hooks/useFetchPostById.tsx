@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import axios from "axios"
+import api from "@/modules/auth/api"
 
 export interface PostDetail {
 	postId: number
@@ -12,7 +12,7 @@ export interface PostDetail {
 }
 
 const getPostByPostId = async (id: string | string[] | undefined): Promise<PostDetail> => {
-	const response = await axios.get(`/api/posts/${id}`)
+	const response = await api.get(`/api/posts/${id}`)
 	const data: PostDetail = response.data
 	return data
 }

@@ -1,9 +1,9 @@
 import { useRouter } from "next/router"
 import { useMutation } from "@tanstack/react-query"
-import axios from "axios"
+import api from "@/modules/auth/api"
 
 const deletePost = async (id: string) => {
-	const response = await axios.delete(`/api/posts/${id}`)
+	const response = await api.delete(`/api/posts/${id}`)
 	return response
 }
 

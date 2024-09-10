@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 import { useMutation } from "@tanstack/react-query"
-import axios from "axios"
+import api from "@/modules/auth/api"
 
 interface UpdatedData {
 	title: string
@@ -8,7 +8,7 @@ interface UpdatedData {
 }
 
 const updatePost = async (data: UpdatedData, id: string) => {
-	const response = await axios.put(`/api/posts/${id}`, data)
+	const response = await api.put(`/api/posts/${id}`, data)
 	return response
 }
 
