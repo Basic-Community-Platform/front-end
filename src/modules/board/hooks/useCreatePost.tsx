@@ -8,8 +8,8 @@ interface CreatedPost {
 }
 
 const createPost = async (data: CreatedPost) => {
-	const payload = { ...data, viewCount: 0, commentCount: 0 }
-	const response = await api.post("/api/posts", payload)
+	const response = await api.post("/api/posts", data)
+	alert(response.statusText)
 	return response
 }
 
