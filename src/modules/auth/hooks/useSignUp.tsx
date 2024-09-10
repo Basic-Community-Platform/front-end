@@ -1,3 +1,4 @@
+import { useRouter } from "next/router"
 import { useMutation } from "@tanstack/react-query"
 import useAuthStore from "../store/AuthStore"
 import axios from "axios"
@@ -15,10 +16,12 @@ const signUp = async (data: SignUp) => {
 }
 
 export const useSignUp = () => {
+	const router = useRouter()
 	return useMutation({
 		mutationFn: signUp,
 		onSuccess: () => {
 			alert("success")
+			router.push("/auth/signin")
 		},
 		onError: (error) => {
 			alert(error.message)
