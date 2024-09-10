@@ -1,4 +1,5 @@
 import { useMutation } from "@tanstack/react-query"
+import useAuthStore from "../store/AuthStore"
 import axios from "axios"
 
 interface SignUp {

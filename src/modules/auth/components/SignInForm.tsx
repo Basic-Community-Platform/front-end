@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { useForm } from "react-hook-form"
+import { useSignIn } from "../hooks/useSignIn"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
@@ -11,10 +12,6 @@ const formSchema = z.object({
 	password: z.string().min(1, "비밀번호를 입력해주세요."),
 })
 
-function onSubmit(values: z.infer<typeof formSchema>) {
-	console.log(values)
-}
-
 export const SignInForm = () => {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -23,6 +20,12 @@ export const SignInForm = () => {
 			password: "",
 		},
 	})
+
+	const { mutate } = useSignIn()
+
+	function onSubmit(values: z.infer<typeof formSchema>) {
+		mutate(values)
+	}
 
 	return (
 		<Form {...form}>
