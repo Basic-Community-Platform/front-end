@@ -10,7 +10,7 @@ const formSchema = z.object({
 })
 
 function onSubmit(values: z.infer<typeof formSchema>) {
-	console.log(values)
+	alert(values)
 }
 
 type CommentFormProps = {
