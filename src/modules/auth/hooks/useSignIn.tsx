@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import { useMutation } from "@tanstack/react-query"
+import api from "../api"
 import useAuthStore from "../store/AuthStore"
-import axios from "axios"
 
 interface SignIn {
 	loginId: string
@@ -9,7 +9,7 @@ interface SignIn {
 }
 
 const signIn = async (data: SignIn) => {
-	const response = await axios.post("/api/users/login", data)
+	const response = await api.post("/api/users/login", data)
 	return response
 }
 
