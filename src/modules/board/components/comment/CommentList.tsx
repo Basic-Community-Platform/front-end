@@ -1,6 +1,8 @@
 import Image from "next/image"
 import { useRouter } from "next/router"
 import { useFetchCommentsByPostId } from "../../hooks/comment/useFetchCommentsByPostId"
+import { DeleteButton } from "./DeleteButton"
+import { UpdateButton } from "./UpdateButton"
 
 export const CommentList = () => {
 	const router = useRouter()
@@ -20,8 +22,8 @@ export const CommentList = () => {
 							<p className="py-6">{comment.content}</p>
 						</div>
 						<div className="flex items-start gap-x-2 text-gray-400">
-							<button>수정</button>
-							<button>삭제</button>
+							<UpdateButton />
+							<DeleteButton />
 						</div>
 					</li>
 				)
@@ -36,8 +38,8 @@ export const CommentList = () => {
 					<p className="py-6">야끼우동. 그의 상대는? 국밥입니다.</p>
 				</div>
 				<div className="flex items-start gap-x-2 text-gray-400">
-					<button>수정</button>
-					<button>삭제</button>
+					<UpdateButton />
+					<DeleteButton />
 				</div>
 			</li>
 			<li key={1} className="flex flex-row justify-between py-6">
@@ -49,8 +51,8 @@ export const CommentList = () => {
 					<p className="py-6">먹는 생각은 원래 행복한 것입니다.</p>
 				</div>
 				<div className="flex items-start gap-x-2 text-gray-400">
-					<button>수정</button>
-					<button>삭제</button>
+					<UpdateButton />
+					<DeleteButton />
 				</div>
 			</li>
 		</ul>
