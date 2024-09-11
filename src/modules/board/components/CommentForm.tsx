@@ -1,4 +1,6 @@
 import { useForm } from "react-hook-form"
+import { useCreateComment } from "../hooks/useCreateComment"
+import { CommentList } from "./CommentList"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
@@ -8,10 +10,6 @@ import { Textarea } from "@/components/ui/textarea"
 const formSchema = z.object({
 	comment: z.string().min(1, "댓글을 입력해주세요."),
 })
-
-function onSubmit(values: z.infer<typeof formSchema>) {
-	alert(values)
-}
 
 type CommentFormProps = {
 	commentCount: number
@@ -24,8 +22,15 @@ export const CommentForm = ({ commentCount }: CommentFormProps) => {
 			comment: "",
 		},
 	})
+
+	const { mutate } = useCreateComment()
+
+	function onSubmit(values: z.infer<typeof formSchema>) {
+		mutate(values)
+	}
+
 	return (
-		<section className="w-screen py-12">
+		<section className="w-full py-12">
 			<h2 className="p-1">{commentCount}개의 댓글</h2>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)}>
@@ -33,7 +38,7 @@ export const CommentForm = ({ commentCount }: CommentFormProps) => {
 						control={form.control}
 						name="comment"
 						render={({ field, fieldState: { error } }) => (
-							<FormItem className="w-2/3">
+							<FormItem className="w-full">
 								<FormControl>
 									<Textarea placeholder="댓글을 입력하세요" {...field} />
 								</FormControl>
@@ -45,13 +50,14 @@ export const CommentForm = ({ commentCount }: CommentFormProps) => {
 							</FormItem>
 						)}
 					/>
-					<div className="flex w-2/3 flex-row justify-end gap-x-2">
+					<div className="flex w-full flex-row justify-end gap-x-2">
 						<Button type="submit" className="w-1/7">
 							댓글 작성
 						</Button>
 					</div>
 				</form>
 			</Form>
+			<CommentList />
 		</section>
 	)
 }

@@ -15,8 +15,8 @@ export const PostDetail = () => {
 	if (isError) return <p>{error.message}</p>
 
 	return (
-		<div className="w-full">
-			<section>
+		<div className="flex w-screen flex-col items-center">
+			<section className="w-2/3">
 				<Table className="border-b border-t border-gray-200">
 					<TableBody>
 						<TableRow>
@@ -44,7 +44,9 @@ export const PostDetail = () => {
 					<DeleteButton />
 				</div>
 			</section>
-			<CommentForm commentCount={data?.commentCount || 0} />
+			<section className="w-2/3">
+				<CommentForm commentCount={data?.commentCount || 0} />
+			</section>
 		</div>
 	)
 }
