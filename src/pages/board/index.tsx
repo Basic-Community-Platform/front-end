@@ -11,8 +11,8 @@ const BoardPage = () => {
 					글쓰기
 				</Button>
 			</Link>
-			<Link href="/board/0">
-				<Button>0번 게시물</Button>
+			<Link href="/board/2">
+				<Button>2번 게시물</Button>
 			</Link>
 		</div>
 	)
