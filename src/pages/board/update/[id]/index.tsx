@@ -1,5 +1,5 @@
 import { UpdatePostLayout } from "@/modules/board/layout/UpdatePostLayout"
-import { UpdatePostForm } from "@/modules/board/components/UpdatePostForm"
+import { UpdatePostForm } from "@/modules/board/components/post/UpdatePostForm"
 
 const UpdatePostPage = () => {
 	const getLayout = UpdatePostPage.getLayout ?? ((page) => page)

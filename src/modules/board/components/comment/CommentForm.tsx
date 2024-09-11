@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { useCreateComment } from "../hooks/useCreateComment"
+import { useCreateComment } from "../../hooks/comment/useCreateComment"
 import { CommentList } from "./CommentList"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"

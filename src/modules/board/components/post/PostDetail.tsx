@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
-import { useFetchPostById } from "../hooks/useFetchPostById"
-import { CommentForm } from "./CommentForm"
+import { useFetchPostById } from "../../hooks/post/useFetchPostById"
+import { CommentForm } from "../comment/CommentForm"
 import { DeleteButton } from "./DeleteButton"
 import { UpdateButton } from "./UpdateButton"
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"

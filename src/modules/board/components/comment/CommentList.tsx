@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { useRouter } from "next/router"
-import { useFetchCommentsByPostId } from "../hooks/useFetchCommentsByPostId"
+import { useFetchCommentsByPostId } from "../../hooks/comment/useFetchCommentsByPostId"
 
 export const CommentList = () => {
 	const router = useRouter()
