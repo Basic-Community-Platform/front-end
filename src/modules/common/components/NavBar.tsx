@@ -36,8 +36,8 @@ export const NavBar = () => {
 						<>
 							<Image src="/avatar.svg" alt="profile image" width={30} height={30} />님
 							{/* https://www.radix-ui.com/primitives/docs/components/dropdown-menu#dropdown-menu */}
-							<DropdownMenu onOpenChange={(open) => setIsDropdownOpen(!open)}>
-								<DropdownMenuTrigger asChild>{isDropdownOpen ? <ChevronDown /> : <ChevronUp />}</DropdownMenuTrigger>
+							<DropdownMenu onOpenChange={(open) => setIsDropdownOpen(open)}>
+								<DropdownMenuTrigger asChild>{isDropdownOpen ? <ChevronUp /> : <ChevronDown />}</DropdownMenuTrigger>
 								<DropdownMenuContent className="w-25">
 									<DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
 										<DropdownMenuRadioItem value="bottom">마이페이지</DropdownMenuRadioItem>
