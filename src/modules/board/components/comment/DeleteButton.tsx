@@ -1,3 +1,6 @@
+import { useDeleteComment } from "../../hooks/comment/useDeleteComment"
+
 export const DeleteButton = () => {
-	return <button>삭제</button>
+	const { mutate } = useDeleteComment()
+	return <button onClick={() => mutate()}>삭제</button>
 }
