@@ -7,7 +7,7 @@ const deleteComment = async (id: string) => {
 	return response
 }
 
-export const useDeletePost = () => {
+export const useDeleteComment = () => {
 	const router = useRouter()
 	const id = router.query.id?.toString() || ""
 	return useMutation({
