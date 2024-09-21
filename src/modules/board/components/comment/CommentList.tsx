@@ -13,11 +13,11 @@ export const CommentList = () => {
 		<ul className="w-full">
 			{comments?.map((comment) => {
 				return (
-					<li key={comment.id} className="flex flex-row justify-between py-6">
+					<li key={comment.commentId} className="flex flex-row justify-between py-6">
 						<div>
 							<div className="flex flex-row items-center gap-x-3">
-								<Image src={comment.user.profileImg} alt="댓글 작성자 프로필 사진" width={30} height={30} />
-								<div>{comment.user.name}</div>
+								<Image src={""} alt="댓글 작성자 프로필 사진" width={30} height={30} />
+								<div>{comment.content}</div>
 							</div>
 							<p className="py-6">{comment.content}</p>
 						</div>

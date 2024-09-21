@@ -1,14 +1,19 @@
 import { useRouter } from "next/router"
+import { ErrorBoundary } from "react-error-boundary"
+import { useQueryErrorResetBoundary } from "@tanstack/react-query"
 import { useFetchPostById } from "../../hooks/post/useFetchPostById"
 import { CommentForm } from "../comment/CommentForm"
 import { DeleteButton } from "./DeleteButton"
 import { UpdateButton } from "./UpdateButton"
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
+import { ErrorFallback } from "@/modules/common/components/ErrorFallback"
 
 export const PostDetail = () => {
 	const router = useRouter()
 	const id = router.query.id?.toString()
 	const { data, isLoading, isError, error } = useFetchPostById(id)
+
+	const { reset } = useQueryErrorResetBoundary()
 
 	if (isLoading) return <p>로딩중...</p>
 
@@ -45,7 +50,14 @@ export const PostDetail = () => {
 				</div>
 			</section>
 			<section className="w-2/3">
-				<CommentForm commentCount={data?.commentCount || 0} />
+				<ErrorBoundary
+					onReset={reset}
+					fallbackRender={({ error, resetErrorBoundary }) => (
+						<ErrorFallback error={error} resetErrorBoundary={resetErrorBoundary} />
+					)}
+				>
+					<CommentForm commentCount={data?.commentCount || 0} />
+				</ErrorBoundary>
 			</section>
 		</div>
 	)
