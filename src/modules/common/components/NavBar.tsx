@@ -15,6 +15,8 @@ import { Input } from "@/components/ui/input"
 
 export const NavBar = () => {
 	const { isLoggedIn, logout } = useAuthStore()
+	const { getUser } = useAuthStore()
+	const user = getUser()
 
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 	const [position, setPosition] = useState("bottom")
@@ -34,8 +36,8 @@ export const NavBar = () => {
 				<div className="flex w-1/2 items-center justify-center gap-x-8">
 					{isLoggedIn ? (
 						<>
-							<Image src="/avatar.svg" alt="profile image" width={30} height={30} />님
-							{/* https://www.radix-ui.com/primitives/docs/components/dropdown-menu#dropdown-menu */}
+							<Image src="/avatar.svg" alt="profile image" width={30} height={30} />
+							{user?.name} 님{/* https://www.radix-ui.com/primitives/docs/components/dropdown-menu#dropdown-menu */}
 							<DropdownMenu onOpenChange={(open) => setIsDropdownOpen(open)}>
 								<DropdownMenuTrigger asChild>{isDropdownOpen ? <ChevronUp /> : <ChevronDown />}</DropdownMenuTrigger>
 								<DropdownMenuContent className="w-25">
