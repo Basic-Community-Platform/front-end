@@ -11,7 +11,7 @@ export interface Comment {
 }
 
 const getCommentsByPostId = async (id: string | string[] | undefined): Promise<Comment[]> => {
-	const response = await api.get(`/api/posts/${id}/comment` )
+	const response = await api.get(`/api/posts/${id}/comments`)
 	const data: Comment[] = response.data
 	return data
 }
@@ -20,6 +20,6 @@ export const useFetchCommentsByPostId = (id: string | undefined) => {
 	return useQuery({
 		queryKey: ["comments", id],
 		queryFn: () => getCommentsByPostId(id && id.toString()),
-		// throwOnError: true
+		throwOnError: true,
 	})
 }
