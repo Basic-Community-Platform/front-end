@@ -8,7 +8,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "@/component
 import { Textarea } from "@/components/ui/textarea"
 
 const formSchema = z.object({
-	comment: z.string().min(1, "댓글을 입력해주세요."),
+	content: z.string().min(1, "댓글을 입력해주세요."),
 })
 
 type CommentFormProps = {
@@ -19,7 +19,7 @@ export const CommentForm = ({ commentCount }: CommentFormProps) => {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			comment: "",
+			content: "",
 		},
 	})
 
@@ -36,7 +36,7 @@ export const CommentForm = ({ commentCount }: CommentFormProps) => {
 				<form onSubmit={form.handleSubmit(onSubmit)}>
 					<FormField
 						control={form.control}
-						name="comment"
+						name="content"
 						render={({ field, fieldState: { error } }) => (
 							<FormItem className="w-full">
 								<FormControl>
