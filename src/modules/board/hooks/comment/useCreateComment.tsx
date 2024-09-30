@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query"
 import api from "@/modules/auth/api"
 
 interface CreatedComment {
-	comment: string
+	content: string
 }
 
 const createComment = async (data: CreatedComment, id: string) => {
