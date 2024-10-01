@@ -23,7 +23,7 @@ export const CommentList = () => {
 						</div>
 						<div className="flex items-start gap-x-2 text-gray-400">
 							<UpdateButton />
-							<DeleteButton />
+							<DeleteButton commentId={comment.commentId.toString()} />
 						</div>
 					</li>
 				)
