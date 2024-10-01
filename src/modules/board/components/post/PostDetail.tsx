@@ -56,7 +56,7 @@ export const PostDetail = () => {
 						<ErrorFallback error={error} resetErrorBoundary={resetErrorBoundary} />
 					)}
 				>
-					<CommentForm commentCount={data?.commentCount || 0} />
+					<CommentForm />
 				</ErrorBoundary>
 			</section>
 		</div>
