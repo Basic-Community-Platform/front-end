@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import api from "@/modules/auth/api"
 
 interface CreatedComment {
@@ -12,12 +12,14 @@ const createComment = async (data: CreatedComment, id: string) => {
 }
 
 export const useCreateComment = () => {
+	const queryClient = useQueryClient()
 	const router = useRouter()
 	const id = router.query.id
 	return useMutation({
 		mutationFn: (data: CreatedComment) => createComment(data, id?.toString() || ""),
 		onSuccess: () => {
 			alert("success")
+			queryClient.invalidateQueries()
 		},
 		onError: (error) => {
 			alert(error.message)
