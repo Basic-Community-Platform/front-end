@@ -11,11 +11,7 @@ const formSchema = z.object({
 	content: z.string().min(1, "댓글을 입력해주세요."),
 })
 
-type CommentFormProps = {
-	commentCount: number
-}
-
-export const CommentForm = ({ commentCount }: CommentFormProps) => {
+export const CommentForm = () => {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -26,12 +22,15 @@ export const CommentForm = ({ commentCount }: CommentFormProps) => {
 	const { mutate } = useCreateComment()
 
 	function onSubmit(values: z.infer<typeof formSchema>) {
-		mutate(values)
+		mutate(values, {
+			onSuccess: () => {
+				form.reset()
+			},
+		})
 	}
 
 	return (
 		<section className="w-full py-12">
-			<h2 className="p-1">{commentCount}개의 댓글</h2>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)}>
 					<FormField

@@ -1,7 +1,6 @@
 import { useRouter } from "next/router"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import api from "@/modules/auth/api"
-import useCommentUpdateStore from "@/modules/auth/store/CommentUpdateStore"
 
 interface updateComment {
 	commentId: string
@@ -14,8 +13,6 @@ const updateComment = async (postId: string, commentId: string, updatedContent: 
 }
 
 export const useUpdateComment = () => {
-	const { setIsUpdateMode } = useCommentUpdateStore()
-
 	const queryClient = useQueryClient()
 	const router = useRouter()
 	const postId = router.query.id?.toString() || ""
@@ -26,7 +23,6 @@ export const useUpdateComment = () => {
 		onSuccess: () => {
 			alert("댓글 수정 성공")
 			queryClient.invalidateQueries()
-			setIsUpdateMode("")
 		},
 		onError: (error) => {
 			alert(error.message)

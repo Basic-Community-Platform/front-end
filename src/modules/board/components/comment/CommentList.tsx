@@ -14,6 +14,7 @@ export const CommentList = () => {
 
 	return (
 		<ul className="w-full">
+			<h2 className="p-1">{comments?.length}개의 댓글</h2>
 			{comments?.map((comment) => {
 				return (
 					<li key={comment.commentId} className="flex flex-col justify-between gap-y-7 py-6">
