@@ -1,32 +1,37 @@
+import { useRouter } from "next/router"
 import { useForm } from "react-hook-form"
+import { useFetchPostById } from "../../hooks/post/useFetchPostById"
+import { useUpdatePost } from "../../hooks/post/useUpdatePost"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { useCreatePost } from "../hooks/useCreatePost"
 
 const formSchema = z.object({
 	title: z.string().min(1, "제목을 입력해주세요."),
 	content: z.string().min(1, "내용을 입력해주세요."),
 })
 
-export const CreatePostForm = () => {
+export const UpdatePostForm = () => {
+	const router = useRouter()
+
+	const { data } = useFetchPostById(router.query.id?.toString())
+
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			title: "",
-			content: "",
+			title: data?.title,
+			content: data?.content,
 		},
 	})
 
-	const { mutate } = useCreatePost()
+	const { mutate } = useUpdatePost()
 
 	const onSubmit = (values: z.infer<typeof formSchema>) => {
 		mutate(values)
 	}
-
 	return (
 		<section className="w-full">
 			<Form {...form}>

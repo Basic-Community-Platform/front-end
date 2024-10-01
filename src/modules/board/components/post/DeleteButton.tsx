@@ -1,4 +1,4 @@
-import { useDeletePost } from "../hooks/useDeletePost"
+import { useDeletePost } from "../../hooks/post/useDeletePost"
 import { Button } from "@/components/ui/button"
 
 export const DeleteButton = () => {

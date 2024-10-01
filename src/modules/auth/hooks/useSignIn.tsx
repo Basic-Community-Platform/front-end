@@ -15,12 +15,13 @@ const signIn = async (data: SignIn) => {
 
 export const useSignIn = () => {
 	const router = useRouter()
-	const { login } = useAuthStore()
+	const { login, setUser } = useAuthStore()
 	return useMutation({
 		mutationFn: signIn,
 		onSuccess: (response) => {
-			const accessToken = response.data.accessToken
-			login(accessToken)
+			const { accessToken, refreshToken, ...user } = response.data
+			setUser(user)
+			login(accessToken, user)
 			router.push("/")
 		},
 		onError: (error) => {

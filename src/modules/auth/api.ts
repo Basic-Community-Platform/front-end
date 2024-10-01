@@ -9,7 +9,6 @@ api.interceptors.request.use(
 		const token = localStorage.getItem("accessToken")
 
 		if (token && !config.url?.includes("users")) {
-			alert(token)
 			config.headers.Authorization = `Bearer ${token}`
 		}
 		return config
