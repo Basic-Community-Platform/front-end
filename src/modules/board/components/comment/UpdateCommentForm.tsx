@@ -1,9 +1,8 @@
 import { useForm } from "react-hook-form"
 import { useUpdateComment } from "../../hooks/comment/useUpdateComment"
-import { DeleteButton } from "./DeleteButton"
-import { UpdateButton } from "./UpdateButton"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
+import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import { Textarea } from "@/components/ui/textarea"
 
@@ -48,9 +47,8 @@ export const UpdateCommentForm = ({ commentId, content }: UpdateCommentFormType)
 						</FormItem>
 					)}
 				/>
-				<div className="flex items-start gap-x-2 text-gray-400">
-					<UpdateButton />
-					
+				<div className="flex justify-end">
+					<Button>수정</Button>
 				</div>
 			</form>
 		</Form>
