@@ -20,6 +20,7 @@ export const useSignIn = () => {
 		mutationFn: signIn,
 		onSuccess: (response) => {
 			const { accessToken, refreshToken, ...user } = response.data
+			alert(refreshToken)
 			setUser(user)
 			login(accessToken, user)
 			router.push("/")
