@@ -26,7 +26,7 @@ export const useUpdateComment = () => {
 		onSuccess: () => {
 			alert("댓글 수정 성공")
 			queryClient.invalidateQueries()
-			setIsUpdateMode(false)
+			setIsUpdateMode("")
 		},
 		onError: (error) => {
 			alert(error.message)

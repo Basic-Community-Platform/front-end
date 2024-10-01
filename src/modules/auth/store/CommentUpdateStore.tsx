@@ -1,15 +1,13 @@
 import { create } from "zustand"
 
 type CommentUpdateType = {
-	isUpdateMode: boolean
 	commentIdUpdated: string
-	setIsUpdateMode: ({ mode, commentIdUpdated }: any) => void
+	setIsUpdateMode: (commentIdUpdated: string) => void
 }
 
 const useCommentUpdateStore = create<CommentUpdateType>((set) => ({
-	isUpdateMode: false,
 	commentIdUpdated: "",
-	setIsUpdateMode: ({ mode, commentIdUpdated }: any) => set({ isUpdateMode: mode, commentIdUpdated }),
+	setIsUpdateMode: (commentIdUpdated: string) => set({ commentIdUpdated }),
 }))
 
 export default useCommentUpdateStore

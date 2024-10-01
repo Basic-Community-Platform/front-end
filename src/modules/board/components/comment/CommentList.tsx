@@ -6,7 +6,7 @@ import { UpdateCommentForm } from "./UpdateCommentForm"
 import useCommentUpdateStore from "@/modules/auth/store/CommentUpdateStore"
 
 export const CommentList = () => {
-	const { commentIdUpdated, isUpdateMode, setIsUpdateMode } = useCommentUpdateStore()
+	const { commentIdUpdated, setIsUpdateMode } = useCommentUpdateStore()
 
 	const router = useRouter()
 	const id = router.query.id
@@ -24,14 +24,12 @@ export const CommentList = () => {
 							</div>
 							<div className="flex flex-row gap-4">
 								{commentIdUpdated?.toString() != comment.commentId.toString() && (
-									<button onClick={() => setIsUpdateMode({ mode: true, commentIdUpdated: comment.commentId })}>
-										수정
-									</button>
+									<button onClick={() => setIsUpdateMode(comment.commentId.toString())}>수정</button>
 								)}
 								<DeleteButton commentId={comment.commentId.toString()} />
 							</div>
 						</div>
-						{isUpdateMode && commentIdUpdated.toString() == comment.commentId.toString() ? (
+						{commentIdUpdated?.toString() == comment.commentId.toString() ? (
 							<UpdateCommentForm commentId={comment.commentId.toString()} content={comment.content} />
 						) : (
 							<p>{comment.content}</p>
