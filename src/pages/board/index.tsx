@@ -10,7 +10,7 @@ const BoardPage = () => {
 	const { data: posts } = useFetchAllPosts()
 
 	return (
-		<div className="w-2/3">
+		<div className="flex h-screen w-2/3 flex-col items-center justify-center border border-red-500">
 			<div>
 				<span className="flex flex-row items-center py-6 text-sm font-semibold">
 					<FileText />총 게시물 {posts?.length || 0}건
