@@ -1,10 +1,14 @@
 import { useRouter } from "next/router"
 import { ErrorBoundary } from "react-error-boundary"
 import { useQueryErrorResetBoundary } from "@tanstack/react-query"
+import { useFetchNextPost } from "../../hooks/post/useFetchNextPost"
 import { useFetchPostById } from "../../hooks/post/useFetchPostById"
+import { useFetchPreviousPost } from "../../hooks/post/useFetchPreviousPost"
 import { CommentForm } from "../comment/CommentForm"
 import { DeleteButton } from "./DeleteButton"
 import { UpdateButton } from "./UpdateButton"
+import { ChevronLeft, ChevronRight } from "lucide-react"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
 import { ErrorFallback } from "@/modules/common/components/ErrorFallback"
 
@@ -12,6 +16,8 @@ export const PostDetail = () => {
 	const router = useRouter()
 	const id = router.query.id?.toString()
 	const { data, isLoading, isError, error } = useFetchPostById(id)
+	const { data: previous } = useFetchPreviousPost(id?.toString() || "")
+	const { data: next } = useFetchNextPost(id?.toString() || "")
 
 	const { reset } = useQueryErrorResetBoundary()
 
@@ -47,6 +53,43 @@ export const PostDetail = () => {
 				<div className="flex justify-end gap-x-2">
 					<UpdateButton />
 					<DeleteButton />
+				</div>
+				<div className="grid grid-cols-2 py-20">
+					{previous ? (
+						<Card
+							className="flex w-[350px] flex-row items-center justify-self-start bg-slate-50 pl-4"
+							onClick={async () => {
+								router.push("" + previous?.postId)
+							}}
+						>
+							<ChevronLeft />
+							<div>
+								<CardHeader>
+									<CardDescription>이전 게시물</CardDescription>
+								</CardHeader>
+								<CardContent>{previous?.title}</CardContent>
+							</div>
+						</Card>
+					) : (
+						<div></div>
+					)}
+
+					{next && (
+						<Card
+							className="flex w-[350px] flex-row items-center justify-end justify-self-end bg-slate-50 pr-4"
+							onClick={async () => {
+								router.push("" + next?.postId)
+							}}
+						>
+							<div>
+								<CardHeader>
+									<CardDescription>다음 게시물</CardDescription>
+								</CardHeader>
+								<CardContent>{next ? next?.title : "다음 게시물이 존재하지 않습니다."}</CardContent>
+							</div>
+							<ChevronRight />
+						</Card>
+					)}
 				</div>
 			</section>
 			<section className="w-2/3">
