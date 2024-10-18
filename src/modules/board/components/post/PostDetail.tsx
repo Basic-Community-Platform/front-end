@@ -8,7 +8,7 @@ import { CommentForm } from "../comment/CommentForm"
 import { DeleteButton } from "./DeleteButton"
 import { UpdateButton } from "./UpdateButton"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
 import { ErrorFallback } from "@/modules/common/components/ErrorFallback"
 
