@@ -22,7 +22,7 @@ export const NavBar = () => {
 
 	return (
 		<header>
-			<nav className="fixed flex h-16 w-screen flex-row items-center justify-between whitespace-nowrap border border-b-2 border-slate-200">
+			<nav className="fixed z-50 flex h-16 w-screen flex-row items-center justify-between whitespace-nowrap border border-b-2 border-slate-200 bg-white">
 				<div className="flex w-1/2 items-center justify-center gap-x-20">
 					<Link href="/">
 						<h1>로고</h1>
