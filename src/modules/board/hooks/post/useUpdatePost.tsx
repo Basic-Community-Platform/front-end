@@ -8,7 +8,7 @@ interface UpdatedData {
 }
 
 const updatePost = async (data: UpdatedData, id: string) => {
-	const response = await api.put(`/api/posts/${id}/comments`, data)
+	const response = await api.put(`/api/posts/${id}`, data)
 	return response
 }
 
