@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { useFetchAllPosts } from "@/modules/board/hooks/post/useFetchAllPosts"
-import { PencilLine } from "lucide-react"
+import { PencilLine, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
@@ -10,7 +10,9 @@ const BoardPage = () => {
 	return (
 		<div className="w-2/3">
 			<div>
-				<span>총 게시물 {posts?.length || 0}건</span>
+				<span className="flex flex-row py-6">
+					<FileText />총 게시물 {posts?.length || 0}건
+				</span>
 			</div>
 			<Table className="border-t-2 border-slate-600">
 				<TableHeader className="bg-slate-50">
