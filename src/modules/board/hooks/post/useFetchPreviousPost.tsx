@@ -11,15 +11,15 @@ export interface PostsDetail {
 	username: string
 }
 
-const getPreviousPost = async (postId: number): Promise<PostsDetail> => {
+const getPreviousPost = async (postId: string): Promise<PostsDetail> => {
 	const response = await api.get(`/api/posts/${postId}/previous`)
 	const data: PostsDetail = response.data
 	return data
 }
 
-export const useFetchAllPosts = (postId: number) => {
+export const useFetchPreviousPost = (postId: string) => {
 	return useQuery({
-		queryKey: ["next", postId],
+		queryKey: ["previous", postId],
 		queryFn: () => getPreviousPost(postId),
 	})
 }

@@ -11,15 +11,16 @@ export interface PostsDetail {
 	username: string
 }
 
-const getNextPost = async (postId: number): Promise<PostsDetail> => {
+const getNextPost = async (postId: string): Promise<PostsDetail> => {
 	const response = await api.get(`/api/posts/${postId}/next`)
 	const data: PostsDetail = response.data
 	return data
 }
 
-export const useFetchAllPosts = (postId: number) => {
+export const useFetchNextPost = (postId: string) => {
 	return useQuery({
 		queryKey: ["next", postId],
 		queryFn: () => getNextPost(postId),
+		retry: 0,
 	})
 }
