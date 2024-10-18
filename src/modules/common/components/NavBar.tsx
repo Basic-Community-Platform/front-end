@@ -11,7 +11,6 @@ import {
 	DropdownMenuRadioItem,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
 
 export const NavBar = () => {
 	const { isLoggedIn, logout } = useAuthStore()
@@ -24,15 +23,14 @@ export const NavBar = () => {
 	return (
 		<header>
 			<nav className="fixed flex h-16 w-screen flex-row items-center justify-between whitespace-nowrap border border-b-2 border-slate-200">
-				<div className="flex w-1/5 items-center justify-center">
+				<div className="flex w-1/2 items-center justify-center gap-x-20">
 					<Link href="/">
 						<h1>로고</h1>
 					</Link>
+					<Link href="/board">
+						<button>게시판</button>
+					</Link>
 				</div>
-				<Link href="/board">
-					<button>게시판</button>
-				</Link>
-				<Input placeholder="게시물을 검색해보세요." className="w-1/5 min-w-52" />
 				<div className="flex w-1/2 items-center justify-center gap-x-8">
 					{isLoggedIn ? (
 						<>

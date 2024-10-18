@@ -13,7 +13,7 @@ interface AuthStore {
 	isLoggedIn: boolean
 	setUser: (user: UserType) => void
 	getUser: () => UserType | null
-	login: (token: string, user: UserType) => void
+	login: (token: string) => void
 	logout: () => void
 }
 
@@ -28,9 +28,9 @@ const useAuthStore = create(
 			getUser: () => {
 				return get().user
 			},
-			login: (token: string, user: UserType) => {
+			login: (token: string) => {
 				localStorage.setItem("accessToken", token)
-				set({ isLoggedIn: true, user })
+				set({ isLoggedIn: true })
 				alert("로그인 되었습니다.")
 			},
 			logout: () => {
