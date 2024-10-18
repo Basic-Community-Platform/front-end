@@ -5,6 +5,8 @@ import { useFetchPostById } from "../../hooks/post/useFetchPostById"
 import { CommentForm } from "../comment/CommentForm"
 import { DeleteButton } from "./DeleteButton"
 import { UpdateButton } from "./UpdateButton"
+import { ChevronLeft, ChevronRight } from "lucide-react"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
 import { ErrorFallback } from "@/modules/common/components/ErrorFallback"
 
@@ -47,6 +49,26 @@ export const PostDetail = () => {
 				<div className="flex justify-end gap-x-2">
 					<UpdateButton />
 					<DeleteButton />
+				</div>
+				<div className="flex flex-row justify-between py-20">
+					<Card className="flex w-[350px] flex-row items-center bg-slate-50 pl-4">
+						<ChevronLeft />
+						<div>
+							<CardHeader>
+								<CardDescription>이전 게시물</CardDescription>
+							</CardHeader>
+							<CardContent>hi</CardContent>
+						</div>
+					</Card>
+					<Card className="flex w-[350px] flex-row items-center justify-end bg-slate-50 pr-4">
+						<div>
+							<CardHeader>
+								<CardDescription>다음 게시물</CardDescription>
+							</CardHeader>
+							<CardContent>hi</CardContent>
+						</div>
+						<ChevronRight />
+					</Card>
 				</div>
 			</section>
 			<section className="w-2/3">
