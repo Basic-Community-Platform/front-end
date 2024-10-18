@@ -3,6 +3,15 @@ import { useFetchAllPosts } from "@/modules/board/hooks/post/useFetchAllPosts"
 import { PencilLine, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import {
+	Select,
+	SelectContent,
+	SelectGroup,
+	SelectItem,
+	SelectLabel,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
 const BoardPage = () => {
@@ -45,8 +54,19 @@ const BoardPage = () => {
 					</Button>
 				</Link>
 			</div>
-			<div className="flex justify-center">
+			<div className="flex items-center justify-center gap-2">
+				<Select>
+					<SelectTrigger className="w-[100px]">
+						<SelectValue placeholder="제목" />
+					</SelectTrigger>
+					<SelectContent>
+						<SelectItem value="light">제목</SelectItem>
+						<SelectItem value="dark">내용</SelectItem>
+						<SelectItem value="system">사용자</SelectItem>
+					</SelectContent>
+				</Select>
 				<Input placeholder="게시물을 검색해보세요." className="w-1/5 min-w-52" />
+				<Button type="submit">검색</Button>
 			</div>
 		</div>
 	)
