@@ -2,6 +2,7 @@ import Link from "next/link"
 import { useFetchAllPosts } from "@/modules/board/hooks/post/useFetchAllPosts"
 import { PencilLine, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
 const BoardPage = () => {
@@ -41,6 +42,9 @@ const BoardPage = () => {
 						글쓰기
 					</Button>
 				</Link>
+			</div>
+			<div className="flex justify-center">
+				<Input placeholder="게시물을 검색해보세요." className="w-1/5 min-w-52" />
 			</div>
 		</div>
 	)
