@@ -4,7 +4,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<>
 			<NavBar />
-			<div className="flex h-screen w-screen flex-col items-center justify-center border border-red-500">
+			<div className="flex h-screen w-screen flex-col items-center justify-start border border-red-500 pt-16">
 				{children}
 			</div>
 		</>
