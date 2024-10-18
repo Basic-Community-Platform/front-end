@@ -11,11 +11,10 @@ const Board = () => {
 
 	return (
 		<div className="flex w-2/3 flex-col items-center justify-center">
-			<div>
-				<span className="flex flex-row items-center py-6 text-sm font-semibold">
-					<FileText />총 게시물 {posts?.length || 0}건
-				</span>
-			</div>
+			<span className="flex w-full flex-row items-center py-6 text-sm font-semibold">
+				<FileText />총 게시물 {posts?.length || 0}건
+			</span>
+
 			<Table className="border-t-2 border-slate-600">
 				<TableHeader className="bg-slate-50">
 					<TableRow className="whitespace-nowrap">
@@ -38,7 +37,7 @@ const Board = () => {
 					))}
 				</TableBody>
 			</Table>
-			<div className="flex justify-end py-6">
+			<div className="flex w-full justify-end py-6">
 				<Link href="/board/create">
 					<Button>
 						<PencilLine className="mr-2 h-4 w-4" />
@@ -46,7 +45,7 @@ const Board = () => {
 					</Button>
 				</Link>
 			</div>
-			<div className="flex items-center justify-center gap-2">
+			<div className="flex items-center gap-2">
 				<Select>
 					<SelectTrigger className="w-[100px]">
 						<SelectValue placeholder="제목" />
