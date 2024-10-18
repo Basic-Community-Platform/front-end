@@ -1,7 +1,9 @@
 import { useRouter } from "next/router"
 import { ErrorBoundary } from "react-error-boundary"
 import { useQueryErrorResetBoundary } from "@tanstack/react-query"
+import { useFetchNextPost } from "../../hooks/post/useFetchNextPost"
 import { useFetchPostById } from "../../hooks/post/useFetchPostById"
+import { useFetchPreviousPost } from "../../hooks/post/useFetchPreviousPost"
 import { CommentForm } from "../comment/CommentForm"
 import { DeleteButton } from "./DeleteButton"
 import { UpdateButton } from "./UpdateButton"
@@ -14,6 +16,8 @@ export const PostDetail = () => {
 	const router = useRouter()
 	const id = router.query.id?.toString()
 	const { data, isLoading, isError, error } = useFetchPostById(id)
+	const { data: previous } = useFetchPreviousPost(id?.toString() || "")
+	const { data: next } = useFetchNextPost(id?.toString() || "")
 
 	const { reset } = useQueryErrorResetBoundary()
 
@@ -50,25 +54,42 @@ export const PostDetail = () => {
 					<UpdateButton />
 					<DeleteButton />
 				</div>
-				<div className="flex flex-row justify-between py-20">
-					<Card className="flex w-[350px] flex-row items-center bg-slate-50 pl-4">
-						<ChevronLeft />
-						<div>
-							<CardHeader>
-								<CardDescription>이전 게시물</CardDescription>
-							</CardHeader>
-							<CardContent>hi</CardContent>
-						</div>
-					</Card>
-					<Card className="flex w-[350px] flex-row items-center justify-end bg-slate-50 pr-4">
-						<div>
-							<CardHeader>
-								<CardDescription>다음 게시물</CardDescription>
-							</CardHeader>
-							<CardContent>hi</CardContent>
-						</div>
-						<ChevronRight />
-					</Card>
+				<div className="grid grid-cols-2 justify-between py-20">
+					{previous ? (
+						<Card
+							className="flex w-[350px] flex-row items-center bg-slate-50 pl-4"
+							onClick={async () => {
+								router.push("" + previous?.postId)
+							}}
+						>
+							<ChevronLeft />
+							<div>
+								<CardHeader>
+									<CardDescription>이전 게시물</CardDescription>
+								</CardHeader>
+								<CardContent>{previous?.title}</CardContent>
+							</div>
+						</Card>
+					) : (
+						<div></div>
+					)}
+
+					{next && (
+						<Card
+							className="flex w-[350px] flex-row items-center justify-end bg-slate-50 pr-4"
+							onClick={async () => {
+								router.push("" + next?.postId)
+							}}
+						>
+							<div>
+								<CardHeader>
+									<CardDescription>다음 게시물</CardDescription>
+								</CardHeader>
+								<CardContent>{next ? next?.title : "다음 게시물이 존재하지 않습니다."}</CardContent>
+							</div>
+							<ChevronRight />
+						</Card>
+					)}
 				</div>
 			</section>
 			<section className="w-2/3">
