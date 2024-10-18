@@ -54,10 +54,10 @@ export const PostDetail = () => {
 					<UpdateButton />
 					<DeleteButton />
 				</div>
-				<div className="grid grid-cols-2 justify-between py-20">
+				<div className="grid grid-cols-2 py-20">
 					{previous ? (
 						<Card
-							className="flex w-[350px] flex-row items-center bg-slate-50 pl-4"
+							className="flex w-[350px] flex-row items-center justify-self-start bg-slate-50 pl-4"
 							onClick={async () => {
 								router.push("" + previous?.postId)
 							}}
@@ -76,7 +76,7 @@ export const PostDetail = () => {
 
 					{next && (
 						<Card
-							className="flex w-[350px] flex-row items-center justify-end bg-slate-50 pr-4"
+							className="flex w-[350px] flex-row items-center justify-end justify-self-end bg-slate-50 pr-4"
 							onClick={async () => {
 								router.push("" + next?.postId)
 							}}
