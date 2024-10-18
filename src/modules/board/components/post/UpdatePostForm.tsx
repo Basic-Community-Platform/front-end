@@ -33,9 +33,9 @@ export const UpdatePostForm = () => {
 		mutate(values)
 	}
 	return (
-		<section className="w-full">
+		<section className="w-2/3 py-32">
 			<Form {...form}>
-				<h1 className="w-full min-w-[400px] py-4 text-xl">글쓰기</h1>
+				<h1 className="w-full min-w-[400px] py-4 text-xl">게시물 수정</h1>
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
 					className="flex h-full w-full min-w-[400px] flex-col items-center justify-center rounded-l border border-slate-200 py-16"
@@ -79,7 +79,7 @@ export const UpdatePostForm = () => {
 							취소
 						</Button>
 						<Button type="submit" className="w-1/7">
-							등록
+							수정
 						</Button>
 					</div>
 				</form>
