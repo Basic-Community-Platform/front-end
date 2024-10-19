@@ -75,25 +75,30 @@ export const UpdatePostForm = () => {
 							</FormItem>
 						)}
 					/>
-					<Modal
-						title="수정 취소"
-						text="수정 중인 글이 모두 이전으로 돌아갑니다. 계속하시겠습니까?"
-						secondButton={
-							<Button
-								type="button"
-								onClick={() => {
-									form.reset()
-									router.back()
-								}}
-							>
-								확인
+					<div className="flex w-2/3 flex-row justify-end gap-x-1">
+						<Modal
+							title="수정 취소"
+							text="수정 중인 글이 모두 이전으로 돌아갑니다. 계속하시겠습니까?"
+							secondButton={
+								<Button
+									type="button"
+									onClick={() => {
+										form.reset()
+										router.back()
+									}}
+								>
+									확인
+								</Button>
+							}
+						>
+							<Button variant="outline" className="w-1/7">
+								취소
 							</Button>
-						}
-					>
-						<Button variant="outline" className="w-1/7">
-							취소
+						</Modal>
+						<Button type="submit" className="w-1/7">
+							수정
 						</Button>
-					</Modal>
+					</div>
 				</form>
 			</Form>
 		</section>
