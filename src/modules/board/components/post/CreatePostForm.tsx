@@ -1,3 +1,4 @@
+import { useRouter } from "next/router"
 import { useForm } from "react-hook-form"
 import { useCreatePost } from "../../hooks/post/useCreatePost"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -13,6 +14,8 @@ const formSchema = z.object({
 })
 
 export const CreatePostForm = () => {
+	const router = useRouter()
+
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -70,7 +73,14 @@ export const CreatePostForm = () => {
 						)}
 					/>
 					<div className="flex w-2/3 flex-row justify-end gap-x-2">
-						<Button variant="outline" type="submit" className="w-1/7">
+						<Button
+							variant="outline"
+							type="button"
+							className="w-1/7"
+							onClick={() => {
+								router.back()
+							}}
+						>
 							취소
 						</Button>
 						<Button type="submit" className="w-1/7">
