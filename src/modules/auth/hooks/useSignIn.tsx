@@ -21,7 +21,7 @@ export const useSignIn = () => {
 		onSuccess: (response) => {
 			const accessToken = response.headers.authorization.split(" ")[1]
 			login(accessToken)
-			router.push("/")
+			router.back()
 		},
 		onError: (error) => {
 			alert(error.message)

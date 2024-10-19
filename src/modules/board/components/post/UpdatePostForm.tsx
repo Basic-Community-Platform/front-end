@@ -4,6 +4,7 @@ import { useFetchPostById } from "../../hooks/post/useFetchPostById"
 import { useUpdatePost } from "../../hooks/post/useUpdatePost"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
+import { Modal } from "@/components/common/Modal"
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
@@ -74,10 +75,26 @@ export const UpdatePostForm = () => {
 							</FormItem>
 						)}
 					/>
-					<div className="flex w-2/3 flex-row justify-end gap-x-2">
-						<Button variant="outline" type="submit" className="w-1/7">
-							취소
-						</Button>
+					<div className="flex w-2/3 flex-row justify-end gap-x-1">
+						<Modal
+							title="수정 취소"
+							text="수정 중인 글이 모두 이전으로 돌아갑니다. 계속하시겠습니까?"
+							secondButton={
+								<Button
+									type="button"
+									onClick={() => {
+										form.reset()
+										router.back()
+									}}
+								>
+									확인
+								</Button>
+							}
+						>
+							<Button variant="outline" className="w-1/7">
+								취소
+							</Button>
+						</Modal>
 						<Button type="submit" className="w-1/7">
 							수정
 						</Button>

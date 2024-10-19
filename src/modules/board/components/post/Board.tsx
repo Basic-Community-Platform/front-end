@@ -15,28 +15,34 @@ const Board = () => {
 				<FileText />총 게시물 {posts?.length || 0}건
 			</span>
 
-			<Table className="border-t-2 border-slate-600">
-				<TableHeader className="bg-slate-50">
-					<TableRow className="whitespace-nowrap">
-						<TableHead className="font-semibold">게시판</TableHead>
-						<TableHead className="w-full font-semibold">제목</TableHead>
-						<TableHead className="font-semibold">등록자명</TableHead>
-						<TableHead className="font-semibold">조회수</TableHead>
-					</TableRow>
-				</TableHeader>
-				<TableBody>
-					{posts?.toReversed().map((post) => (
-						<TableRow key={post.postId}>
-							<TableCell className="text-center">{post.postId}</TableCell>
-							<Link href={`board/${post.postId}`} key={post.postId}>
-								<TableCell className="w-screen font-medium">{post.title}</TableCell>
-							</Link>
-							<TableCell className="text-center">{post.loginId}</TableCell>
-							<TableCell className="text-center">{post.viewCount}</TableCell>
+			{posts?.length ? (
+				<Table className="border-t-2 border-slate-600">
+					<TableHeader className="bg-slate-50">
+						<TableRow className="whitespace-nowrap">
+							<TableHead className="font-semibold">게시판</TableHead>
+							<TableHead className="w-full font-semibold">제목</TableHead>
+							<TableHead className="font-semibold">등록자명</TableHead>
+							<TableHead className="font-semibold">조회수</TableHead>
 						</TableRow>
-					))}
-				</TableBody>
-			</Table>
+					</TableHeader>
+					<TableBody>
+						{posts?.toReversed().map((post) => (
+							<TableRow key={post.postId}>
+								<TableCell className="text-center">{post.postId}</TableCell>
+								<Link href={`board/${post.postId}`} key={post.postId}>
+									<TableCell className="w-screen font-medium">{post.title}</TableCell>
+								</Link>
+								<TableCell className="text-center">{post.loginId}</TableCell>
+								<TableCell className="text-center">{post.viewCount}</TableCell>
+							</TableRow>
+						))}
+					</TableBody>
+				</Table>
+			) : (
+				<p className="flex h-[100px] w-full items-center justify-center border border-slate-200 text-slate-500">
+					게시물이 존재하지 않습니다.
+				</p>
+			)}
 			<div className="flex w-full justify-end py-6">
 				<Link href="/board/create">
 					<Button>
