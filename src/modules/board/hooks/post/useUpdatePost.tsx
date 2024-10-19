@@ -18,7 +18,6 @@ export const useUpdatePost = () => {
 	return useMutation({
 		mutationFn: (updatedData: UpdatedData) => updatePost(updatedData, id),
 		onSuccess: () => {
-			alert("수정 성공")
 			router.push(`/board/${id}`)
 		},
 		onError: (error) => {
