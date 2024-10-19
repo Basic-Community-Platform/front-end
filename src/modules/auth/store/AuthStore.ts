@@ -36,7 +36,7 @@ const useAuthStore = create(
 			logout: () => {
 				set({ isLoggedIn: false, user: null })
 				localStorage.clear()
-				alert("로그아웃 되었습니다.")
+				window.location.href = "/"
 			},
 		}),
 		{
