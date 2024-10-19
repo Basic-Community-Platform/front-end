@@ -75,7 +75,16 @@ export const UpdatePostForm = () => {
 						)}
 					/>
 					<div className="flex w-2/3 flex-row justify-end gap-x-2">
-						<Button variant="outline" type="submit" className="w-1/7">
+						<Button
+							variant="outline"
+							type="submit"
+							className="w-1/7"
+							onClick={() => {
+								// TODO: 취소하시겠습니까 모달
+								form.reset()
+								router.back()
+							}}
+						>
 							취소
 						</Button>
 						<Button type="submit" className="w-1/7">
