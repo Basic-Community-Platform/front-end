@@ -41,9 +41,7 @@ export const Modal = ({ children, title, text, firstButton, secondButton }: Moda
 					</DialogFooter>
 				</DialogContent>
 			</Dialog>
-			<Button type="button" className="w-1/7">
-				수정
-			</Button>
+
 		</div>
 	)
 }
