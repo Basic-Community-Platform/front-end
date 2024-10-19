@@ -1,6 +1,5 @@
 import { useRouter } from "next/router"
 import { useMutation } from "@tanstack/react-query"
-import { useToast } from "@/hooks/use-toast"
 import api from "@/modules/auth/api"
 
 interface CreatedPost {
@@ -15,12 +14,11 @@ const createPost = async (data: CreatedPost) => {
 
 export const useCreatePost = () => {
 	const router = useRouter()
-	const { toast } = useToast()
 	return useMutation({
 		mutationFn: createPost,
-		onSuccess: () => {
-			toast({ title: "success" })
-			router.push("/board")
+		onSuccess: (response) => {
+			const postId = response.data.postId
+			router.push(`/board/${postId}`)
 		},
 		onError: (error) => {
 			alert(error.message)
