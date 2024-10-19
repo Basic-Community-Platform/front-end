@@ -13,7 +13,6 @@ export const useDeletePost = () => {
 	return useMutation({
 		mutationFn: () => deletePost(id),
 		onSuccess: () => {
-			alert("삭제 성공")
 			router.push("/board")
 		},
 		onError: (error) => {
