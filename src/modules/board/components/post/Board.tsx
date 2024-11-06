@@ -3,16 +3,27 @@ import { useFetchAllPosts } from "@/modules/board/hooks/post/useFetchAllPosts"
 import { PencilLine, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import {
+	Pagination,
+	PaginationContent,
+	PaginationItem,
+	PaginationLink,
+	PaginationNext,
+	PaginationPrevious,
+} from "@/components/ui/pagination"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
 const Board = () => {
 	const { data: posts } = useFetchAllPosts()
 
+	const currentPage = Number(posts?.number) || 0
+	const lastPage = Number(posts?.totalPages) || 0
+
 	return (
 		<div className="flex w-2/3 flex-col items-center justify-center">
 			<span className="flex w-full flex-row items-center py-6 text-sm font-semibold">
-				<FileText />총 게시물 {posts?.numberOfElements || 0}건
+				<FileText />총 게시물 {posts?.totalElements || 0}건
 			</span>
 
 			{posts?.numberOfElements ? (
@@ -43,6 +54,36 @@ const Board = () => {
 					게시물이 존재하지 않습니다.
 				</p>
 			)}
+			<Pagination>
+				<PaginationContent>
+					{!posts?.first && (
+						<PaginationItem>
+							<PaginationPrevious href={`?page=${currentPage - 1}`} />
+						</PaginationItem>
+					)}
+					{Array(7)
+						.fill(currentPage - 3)
+						.map((num, index) => {
+							const pageNumber = num + index
+							return (
+								// 페이지 번호가 1보다 크거나 같고 totalPages보다 작거나 같을 때만 표시
+								pageNumber >= 0 &&
+								pageNumber < lastPage && (
+									<PaginationItem key={index}>
+										<PaginationLink href={`?page=${pageNumber}`} isActive={pageNumber === currentPage}>
+											{pageNumber + 1}
+										</PaginationLink>
+									</PaginationItem>
+								)
+							)
+						})}
+					{!posts?.last && (
+						<PaginationItem>
+							<PaginationNext href={`?page=${currentPage + 1}`} />
+						</PaginationItem>
+					)}
+				</PaginationContent>
+			</Pagination>
 			<div className="flex w-full justify-end py-6">
 				<Link href="/board/create">
 					<Button>

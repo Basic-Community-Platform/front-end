@@ -1,3 +1,4 @@
+import { useRouter } from "next/router"
 import { useQuery } from "@tanstack/react-query"
 import api from "@/modules/auth/api"
 
@@ -40,11 +41,11 @@ interface PagedPostResponse {
 	empty: boolean
 }
 
-const getAllPosts = async (): Promise<PagedPostResponse> => {
+const getAllPosts = async (page: string | "0", size: string): Promise<PagedPostResponse> => {
 	const response = await api.get(`/api/posts`, {
 		params: {
-			page: 0,
-			size: 10,
+			page,
+			size,
 		},
 	})
 	const data: PagedPostResponse = response.data
@@ -52,8 +53,11 @@ const getAllPosts = async (): Promise<PagedPostResponse> => {
 }
 
 export const useFetchAllPosts = () => {
+	const router = useRouter()
+	const page = router.query.page as string
+	const size = "10"
 	return useQuery({
-		queryKey: ["posts"],
-		queryFn: () => getAllPosts(),
+		queryKey: ["posts", page, size],
+		queryFn: () => getAllPosts(page || "0", size),
 	})
 }
