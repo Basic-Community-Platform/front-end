@@ -12,10 +12,10 @@ const Board = () => {
 	return (
 		<div className="flex w-2/3 flex-col items-center justify-center">
 			<span className="flex w-full flex-row items-center py-6 text-sm font-semibold">
-				<FileText />총 게시물 {posts?.length || 0}건
+				<FileText />총 게시물 {posts?.numberOfElements || 0}건
 			</span>
 
-			{posts?.length ? (
+			{posts?.numberOfElements ? (
 				<Table className="border-t-2 border-slate-600">
 					<TableHeader className="bg-slate-50">
 						<TableRow className="whitespace-nowrap">
@@ -26,13 +26,13 @@ const Board = () => {
 						</TableRow>
 					</TableHeader>
 					<TableBody>
-						{posts?.toReversed().map((post) => (
+						{posts?.content.map((post) => (
 							<TableRow key={post.postId}>
 								<TableCell className="text-center">{post.postId}</TableCell>
 								<Link href={`board/${post.postId}`} key={post.postId}>
 									<TableCell className="w-screen font-medium">{post.title}</TableCell>
 								</Link>
-								<TableCell className="text-center">{post.loginId}</TableCell>
+								<TableCell className="text-center">{post.userInfo.name}</TableCell>
 								<TableCell className="text-center">{post.viewCount}</TableCell>
 							</TableRow>
 						))}
