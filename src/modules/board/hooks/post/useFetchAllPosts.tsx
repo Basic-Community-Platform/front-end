@@ -41,7 +41,12 @@ interface PagedPostResponse {
 }
 
 const getAllPosts = async (): Promise<PagedPostResponse> => {
-	const response = await api.get(`/api/posts`)
+	const response = await api.get(`/api/posts`, {
+		params: {
+			page: 0,
+			size: 10,
+		},
+	})
 	const data: PagedPostResponse = response.data
 	return data
 }
